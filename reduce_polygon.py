@@ -35,8 +35,6 @@ for file in files:
 		if y > 500000:
 			print(len(mpolygon))
 			for n,polygon in enumerate(mpolygon):
-				#print('number of coordinates in the polygon ' + str(len(polygon)))
-				#polygon2 = polygon[0]
 				if len(polygon) > 100000:
 					polygon = polygon[0::10000]
 					polygon.append(polygon[0])
@@ -52,25 +50,18 @@ for file in files:
 				elif len(polygon) > 100:
 					polygon = polygon[0::10]
 					polygon.append(polygon[0])	
-					#polygon[0] = polygon2
 					mpolygon[n] = polygon
 				elif len(polygon) > 50:
 					polygon = polygon[0::9]
 					polygon.append(polygon[0])	
-					#polygon[0] = polygon2
 					mpolygon[n] = polygon
 				elif len(polygon) < 10:
 					polygon = []
 					mpolygon[n] = polygon					
 				else:
-					#polygon[0] = []
 					mpolygon[n] = polygon
-				#print('number of coordinates in the polygon ' + str(len(polygon)))
-				#print('\n')
 		elif y > 100000:
 			for n,polygon in enumerate(mpolygon):
-				#print('number of coordinates in the polygon ' + str(len(polygon)))
-				#polygon2 = polygon[0]
 				if len(polygon) > 10000:
 					polygon = polygon[0::1000]
 					polygon.append(polygon[0])
@@ -87,91 +78,67 @@ for file in files:
 				elif len(polygon) > 50:
 					polygon = polygon[0::9]
 					polygon.append(polygon[0])	
-					#polygon[0] = polygon2
 					mpolygon[n] = polygon
 				elif len(polygon) < 10:
 					polygon = []
 					mpolygon[n] = polygon
 				else:
-					#polygon[0] = []
 					mpolygon[n] = polygon
 		elif y > 10000:
 			for n,polygon in enumerate(mpolygon):
-				#print('number of coordinates in the polygon ' + str(len(polygon)))
-				#polygon2 = polygon[0]
 				if len(polygon) > 1000:
 					polygon = polygon[0::100]
 					polygon.append(polygon[0])
-					#polygon[0] = polygon2
 					mpolygon[n] = polygon
 				elif len(polygon) > 100:
 					polygon = polygon[0::10]
 					polygon.append(polygon[0])
-					#polygon[0] = polygon2
 					mpolygon[n] = polygon
 				elif len(polygon) < 10:
 					polygon = []
 					mpolygon[n] = polygon
 				else:
-					#polygon[0] = []
 					mpolygon[n] = polygon
 		elif y > 2499:
 			for n,polygon in enumerate(mpolygon):
-				#print('number of coordinates in the polygon ' + str(len(polygon)))
-				#polygon2 = polygon[0]
 				if len(polygon) > 36:
 					polygon = polygon[0::9]
 					polygon.append(polygon[0])
-					#polygon[0] = polygon2
 					mpolygon[n] = polygon
 				else:
-					#polygon[0] = []
 					mpolygon[n] = polygon
 		elif y > 1999:
 			for n,polygon in enumerate(mpolygon):
-				#polygon2 = polygon[0]
 				if len(polygon) > 25:
 					polygon = polygon[0::8]
 					polygon.append(polygon[0])
-					#polygon[0] = polygon2
 					mpolygon[n] = polygon
 				else:
-					#polygon[0] = []
 					mpolygon[n] = polygon
 		elif y > 1299:
 			for n,polygon in enumerate(mpolygon):
-				#print('number of coordinates in the polygon ' + str(len(polygon)))
-				#polygon2 = polygon[0]
 				if len(polygon) > 25:
 					polygon = polygon[0::7]
 					polygon.append(polygon[0])
-					#polygon[0] = polygon2
 					mpolygon[n] = polygon
 				else:
-					#polygon[0] = []
 					mpolygon[n] = polygon
 		elif y > 1199:
 			for n,polygon in enumerate(mpolygon):
-				#polygon2 = polygon[0]
 				if len(polygon) > 20:
 					print('small polygon')
 					polygon = polygon[0::6]
 					polygon.append(polygon[0])
-					#polygon[0] = polygon2
 					mpolygon[n] = polygon
 				else:
-					#polygon[0] = []
 					mpolygon[n] = polygon
 		elif y > 399:
 			for n,polygon in enumerate(mpolygon):
-				#polygon2 = polygon[0]
 				if len(polygon) > 15:
 					polygon = polygon[0::5]
 					polygon.append(polygon[0])
-					#polygon[0] = polygon
 					mpolygon[n] = polygon
 				else:
-					#polygon[0] = []
 					mpolygon[n] = polygon
 		else:
 			print('short enough already')
@@ -179,50 +146,17 @@ for file in files:
 		for polygon in mpolygon:
 			y = y + len(polygon)
 		print('total number of coordinates ' + str(y))
-		#print(mpolygon)
 		print('number of polygons ' + str(len(mpolygon)))
 		upoly = list(filter(None, mpolygon))
-		#print(upoly[0][0])
-		#print(len(upoly))
 		for z,y in enumerate(upoly):
 			for k,u in enumerate(y):
-				#print(u) #u is every coordinate pair
 				for j,g in enumerate(u):
-					#print(g) #g is every single coordinate
-					#if sea['properties']['name'] == 'Gulf of Aqaba':
-					#	print(u[j])
 					u[j] = round(g, 3)
-					#print(u)
 				y[k] = u
 			upoly[z] = y
-			#print('upoly')
-			#print(upoly)
-			#upoly[0][0] = upoly[0]
 		sea['geometry']['coordinates'] = upoly
-		#print(sea['geometry']['coordinates'])
 	else:
 		print('error')
-#	print(len(polygon))
-#	u = polygon[0]
-#	for i,coor in enumerate(u):
-#		for j,g in enumerate(coor):
-#			coor[j] = round(g, 3)
-#		u[i] = coor
-#	polygon[0] = u
 	shapes['features'] = sea
-	#print(shapes)
 	all_shapes.append(shapes)
-	#print(len(all_shapes))
 json.dump(all_shapes, out_file)
-"""
-		#print(upoly)
-		print(len(upoly))
-		for p in upoly:
-			print(len(p))
-		sea['geometry']['coordinates'] = upoly
-		print(sea['geometry']['coordinates'])
-    #else:
-        #print 'error'
-shapes['features'] = countries
-json.dump(shapes, out_file)
-"""
