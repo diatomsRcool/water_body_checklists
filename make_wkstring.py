@@ -1,8 +1,8 @@
 import json
 
-shape_file = open('low_res_sea.json','r')
+shape_file = open('low_res_sea_4.json','r')
 shapes = json.load(shape_file)
-out_file = open('wkstring.tsv', 'w')
+out_file = open('wkt_string_4.tsv', 'w')
 
 #print(shapes[0])
 
@@ -15,7 +15,7 @@ for sea in shapes:
 	print(shape_type)
 	if shape_type == 'Polygon': #some water body polygons are multiple polygons. Need a different procedure
 		p = []
-		wkt = polygons['geometry']['coordinates'][0]
+		wkt = polygons['geometry']['coordinates']
 		for i in wkt:
 			z = []
 			lat = i[1]
@@ -30,7 +30,7 @@ for sea in shapes:
 	elif shape_type == 'MultiPolygon':
 		q = ''
 		#url = 'http://api.effechecka.org/checklist.tsv?traitSelector=&wktString=GEOMETRYCOLLECTION%28POLYGON%20%28%28'
-		wkt = polygons['geometry']['coordinates'][0]
+		wkt = polygons['geometry']['coordinates']
 		print(len(wkt))
 		#print(wkt)
 		for k in wkt:
@@ -40,10 +40,11 @@ for sea in shapes:
 				continue
 			p = []
 			for i in k:
-				#print(i)
 				z = []
-				for j in i:
-					z.append(str(j))
+				lat = i[0]
+				lon = i[1]
+				z.append(str(lon))
+				z.append(str(lat))
 				m = '%20'.join(z)
 				p.append(str(m))
 			q = q + '%2C%20'.join(p) + '%29%29%2CPOLYGON%20%28%28'
