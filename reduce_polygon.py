@@ -3,7 +3,7 @@ import itertools
 import pickle
 
 files = ['adriatic','aegean','alboran','andaman','arabian','arafura','arctic','azov','baffin','balearic','bali','baltic','banda','barents','bass','beaufort','bengal','bering','biscay','bismarck','black','bristol','caribbean','celebes','celtic','ceram','chukchi','coral','davis','east_siberian','eastern_china','english_channel','flores','fundy','goaden','goalaska','goaqaba','goboni','gobothnia','gocalifornia','gofinland','goguinea','gomexico','gooman','goriga','gostlawrence','gosuez','gothailand','gotomini','great_australian_bight','greenland','halmahera','hudsonbay','hudsonstrait','indianocean','inlandsea','ionian','irishsea','japansea','javasea','karasea','kattegat','labrador','laccadive','laptev','ligurian','lincoln','makassar','malacca','marmara','mediterranean','molukka','mozambiquechannel','northatlantic','northpacific','northsea','norwegiansea','nwpassage','okhotsk','persiangulf','philippinesea','redsea','riodelaplata','savusea','singaporestrait','skagerrak','solomonsea','southatlantic','southchina','southernocean','southpacific','straitgibraltar','sulusea','tasmansea','timorsea','tyrrheniansea','westscotland','whitesea','yellowsea']
-out_file = open('low_res_sea_4.json', 'w')
+out_file = open('low_res_sea.json', 'w')
 
 all_shapes = []
 
@@ -86,7 +86,12 @@ for file in files:
 					mpolygon[n] = polygon
 		elif y > 10000:
 			for n,polygon in enumerate(mpolygon):
-				if len(polygon) > 1000:
+				#print('number of coordinates ' + str(len(polygon)))
+				if len(polygon) > 5000:
+					polygon = polygon[0::500]
+					polygon.append(polygon[0])
+					mpolygon[n] = polygon
+				elif len(polygon) > 1000:
 					polygon = polygon[0::100]
 					polygon.append(polygon[0])
 					mpolygon[n] = polygon
@@ -94,11 +99,17 @@ for file in files:
 					polygon = polygon[0::10]
 					polygon.append(polygon[0])
 					mpolygon[n] = polygon
-				elif len(polygon) < 10:
+				elif len(polygon) > 50:
+					polygon = polygon[0::10]
+					polygon.append(polygon[0])
+					mpolygon[n] = polygon
+				elif len(polygon) < 50:
 					polygon = []
 					mpolygon[n] = polygon
 				else:
 					mpolygon[n] = polygon
+				#print('number of coordinates ' + str(len(polygon)))
+				#print('\n')
 		elif y > 2499:
 			for n,polygon in enumerate(mpolygon):
 				if len(polygon) > 36:
