@@ -36,7 +36,7 @@ for file in files:
 			print(len(mpolygon))
 			for n,polygon in enumerate(mpolygon):
 				if len(polygon) > 100000:
-					polygon = polygon[0::10000]
+					polygon = polygon[0::50000]
 					polygon.append(polygon[0])
 					mpolygon[n] = polygon
 				elif len(polygon) > 10000:
@@ -84,6 +84,28 @@ for file in files:
 					mpolygon[n] = polygon
 				else:
 					mpolygon[n] = polygon
+		elif y > 50000:
+			for n,polygon in enumerate(mpolygon):
+				#print('number of coordinates ' + str(len(polygon)))
+				if len(polygon) > 5000:
+					polygon = polygon[0::500]
+					polygon.append(polygon[0])
+					mpolygon[n] = polygon
+				elif len(polygon) > 1000:
+					polygon = polygon[0::500]
+					polygon.append(polygon[0])
+					mpolygon[n] = polygon
+				elif len(polygon) > 100:
+					polygon = polygon[0::50]
+					polygon.append(polygon[0])
+					mpolygon[n] = polygon
+				elif len(polygon) < 100:
+					polygon = []
+					mpolygon[n] = polygon
+				else:
+					mpolygon[n] = polygon
+				#print('number of coordinates ' + str(len(polygon)))
+				#print('\n')
 		elif y > 10000:
 			for n,polygon in enumerate(mpolygon):
 				#print('number of coordinates ' + str(len(polygon)))
@@ -99,11 +121,7 @@ for file in files:
 					polygon = polygon[0::10]
 					polygon.append(polygon[0])
 					mpolygon[n] = polygon
-				elif len(polygon) > 50:
-					polygon = polygon[0::10]
-					polygon.append(polygon[0])
-					mpolygon[n] = polygon
-				elif len(polygon) < 50:
+				elif len(polygon) < 10:
 					polygon = []
 					mpolygon[n] = polygon
 				else:
@@ -157,7 +175,7 @@ for file in files:
 		for polygon in mpolygon:
 			y = y + len(polygon)
 		print('total number of coordinates ' + str(y))
-		print('number of polygons ' + str(len(mpolygon)))
+		#print('number of polygons ' + str(len(mpolygon)))
 		upoly = list(filter(None, mpolygon))
 		for z,y in enumerate(upoly):
 			for k,u in enumerate(y):
