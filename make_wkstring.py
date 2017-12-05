@@ -22,7 +22,7 @@ for sea in shapes:
 			m = '%20'.join(z)
 			p.append(str(m))
 		q = '%2C%20'.join(p)
-		z = 'POLYGON((' + str(q) + '))'
+		z = 'POLYGON((' + str(q) + ')))'
 	elif shape_type == 'MultiPolygon':
 		q = ''
 		wkt = polygons['geometry']['coordinates']
