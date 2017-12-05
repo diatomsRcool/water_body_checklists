@@ -35,22 +35,25 @@ for file in files:
 		max_polygon = mpolygon[t]
 		print('largest polygon before reduction ' + str(len(max_polygon)))
 		if len(max_polygon) > 300000:
-			max_polygon = max_polygon[0::5000]
+			max_polygon = max_polygon[0::20000]
+			max_polygon.append(max_polygon[0])
+		elif len(max_polygon) > 100000:
+			max_polygon = max_polygon[0::2000]
 			max_polygon.append(max_polygon[0])
 		elif len(max_polygon) > 80000:
-			max_polygon = max_polygon[0::1000]
+			max_polygon = max_polygon[0::9000]
 			max_polygon.append(max_polygon[0])
 		elif len(max_polygon) > 30000:
-			max_polygon = max_polygon[0::300]
+			max_polygon = max_polygon[0::1000]
 			max_polygon.append(max_polygon[0])
 		elif len(max_polygon) > 9000:
-			max_polygon = max_polygon[0::100]
+			max_polygon = max_polygon[0::900]
 			max_polygon.append(max_polygon[0])
 		elif len(max_polygon) > 1000:
-			max_polygon = max_polygon[0::30]
+			max_polygon = max_polygon[0::100]
 			max_polygon.append(max_polygon[0])
 		elif len(max_polygon) > 300:
-			max_polygon = max_polygon[0::5]
+			max_polygon = max_polygon[0::30]
 			max_polygon.append(max_polygon[0])	
 		else:
 			print('polygon is small enough already')
