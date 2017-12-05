@@ -15,8 +15,8 @@ for sea in shapes:
 		wkt = polygons['geometry']['coordinates']
 		for i in wkt:
 			z = []
-			lat = i[1]
-			lon = i[0]
+			lat = i[0]
+			lon = i[1]
 			z.append(str(lon))
 			z.append(str(lat))
 			m = '%20'.join(z)

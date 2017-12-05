@@ -62,28 +62,35 @@ for file in files:
 					mpolygon[n] = polygon
 		elif y > 100000:
 			for n,polygon in enumerate(mpolygon):
-				if len(polygon) > 10000:
-					polygon = polygon[0::1000]
+				print('number of coordinates ' + str(len(polygon)))
+				if len(polygon) > 50000:
+					polygon = polygon[0::5000]
+					polygon.append(polygon[0])
+					mpolygon[n] = polygon
+				elif len(polygon) > 10000:
+					polygon = polygon[0::5000]
 					polygon.append(polygon[0])
 					mpolygon[n] = polygon
 				elif len(polygon) > 1000:
-					polygon = polygon[0::100]
+					polygon = polygon[0::500]
 					polygon.append(polygon[0])
 					mpolygon[n] = polygon
 				elif len(polygon) > 100:
-					polygon = polygon[0::10]
+					polygon = polygon[0::50]
 					polygon.append(polygon[0])	
 					#polygon[0] = polygon2
 					mpolygon[n] = polygon
 				elif len(polygon) > 50:
-					polygon = polygon[0::9]
+					polygon = polygon[0::10]
 					polygon.append(polygon[0])	
 					mpolygon[n] = polygon
-				elif len(polygon) < 10:
+				elif len(polygon) < 50:
 					polygon = []
 					mpolygon[n] = polygon
 				else:
 					mpolygon[n] = polygon
+				print('number of coordinates ' + str(len(polygon)))
+				print('\n')
 		elif y > 50000:
 			for n,polygon in enumerate(mpolygon):
 				#print('number of coordinates ' + str(len(polygon)))
