@@ -88,15 +88,15 @@ for file in files:
 			for n,polygon in enumerate(mpolygon):
 				#print('number of coordinates ' + str(len(polygon)))
 				if len(polygon) > 5000:
-					polygon = polygon[0::500]
+					polygon = polygon[0::800]
 					polygon.append(polygon[0])
 					mpolygon[n] = polygon
 				elif len(polygon) > 1000:
-					polygon = polygon[0::500]
+					polygon = polygon[0::800]
 					polygon.append(polygon[0])
 					mpolygon[n] = polygon
 				elif len(polygon) > 100:
-					polygon = polygon[0::50]
+					polygon = polygon[0::80]
 					polygon.append(polygon[0])
 					mpolygon[n] = polygon
 				elif len(polygon) < 100:
