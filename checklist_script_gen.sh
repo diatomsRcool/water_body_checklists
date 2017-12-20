@@ -4,4 +4,4 @@
 # checklist_status.tsv contains a status overview of all checklists associated with wkt_string.tsv
 # see https://github.com/effechecka/effechecka_scripts
 
-bash <(curl -s https://raw.githubusercontent.com/effechecka/effechecka-scripts/master/checklist_script_gen.sh)
+source <(curl -s https://raw.githubusercontent.com/effechecka/effechecka-scripts/master/checklist_script_gen.sh)
