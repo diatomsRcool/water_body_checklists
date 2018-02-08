@@ -1,0 +1,98 @@
+water_body	mrgid	number_species	number_records
+Indian Ocean	1904	72131	5901072
+Arctic Ocean	1906	1952	67153
+Southern Ocean	1907	9706	1498141
+North Pacific	1908	90597	19714677
+South Pacific	1910	58163	3004358
+North Atlantic	1912	83866	43984554
+South Atlantic	1914	60616	3493459
+North Sea	2350	7688	5851385
+Celtic Sea	2351	3768	419781
+Norwegian Sea	2353	452	24534
+Greenland Sea	2356	2226	181642
+Irish Sea	2357	3968	618846
+Bay of Biscay	2359	2975	186689
+Kattegat	2374	2938	2803443
+Skagerrak	2379	3830	2496123
+English Channel	2389	4410	473004
+Gulf of Bothnia	2402	575	1552874
+Gulf of Finland	2407	459	330779
+Gulf of Riga	2409	221	13437
+Bristol Channel	3141	1927		
+Adriatic Sea	3314	2173	41949
+Aegean Sea	3315	3104	53133
+Black Sea	3319	736	12181
+Sea of Azov	3320	64	372
+Balearic Sea	3322	2642	143604
+Alboran Sea	3324	1103	10578
+Strait of Gibraltar	3346	609	1999
+Ionian Sea	3351	1627	14799
+Ligurian Sea	3363	372	1732
+Sea of Marmara	3369	222	3226
+Tyrrhenian Sea	3386	2906	55489
+East Siberian Sea	4244	150	626
+Laptev Sea	4245	438	9818
+Kara Sea	4246	778	24061
+Barents Sea	4247	2232	278993
+White Sea	4248	452	24140
+Davis Strait	4250	1202	46646
+Hudson Strait	4251	237	4927
+Hudson Bay	4252	570	129096
+Baffin Bay	4253	560	23762
+Lincoln Sea	4254	32	290
+Beaufort Sea	4256	1234	176698
+Chukchi Sea	4257	920	23495
+Mozambique Channel	4261	10413	107957
+Gulf of Suez	4262	364	1310
+Gulf of Aqaba	4263	1147	4263
+Red Sea	4264	2422	21601
+Gulf of Aden	4265	1499	24241
+Persian Gulf	4266	1268	23170
+Gulf of Oman	4267	1166	7983
+Arabian Sea	4268	7225	124497
+Laccadive Sea	4269	4871	49149
+Bay of Bengal	4273	6608	34388
+Andaman Sea	4274	4460	19518
+Malacca Strait	4275	2709	21298
+Great Australian Bight	4276	6412	338822
+Inner Seas off the West Coast of Scotland	4283	3025	335979
+Gulf of Guinea	4286	8736	254291
+Caribbean Sea	4287	11571	608383
+Gulf of Mexico	4288	13941	4800484
+Bay of Fundy	4289	1669	232910
+Gulf of St Lawrence	4290	1235	464682
+Labrador Sea	4291	1365	222997
+Philippine Sea	4300	16741	301052
+Eastern China Sea	4302	4113	56812
+Yellow Sea	4303	971	32350
+Seto Inland Sea	4306	1712	45725
+Sea of Japan	4307	3776	55720
+Sea of Okhostk	4309	958	8794
+Bering Sea	4310	3591	926612
+Gulf of Alaska	4312	2935	400240
+Gulf of California	4314	4808	108577
+Rio de la Plata	4325	275	6607
+South China Sea	4332	10445	289368
+Gulf of Thailandf	4334	1862	27531
+Singapore Strait	4336	2093	12196
+Java Sea	4338	1725	8911
+Makassar Strait	4339	2004	8047
+Bali Sea	4340	1596	8951
+Flores Sea	4341	1853	7422
+Savu Sea	4343	1477	4761
+Timor Sea	4344	6991	172510
+Arafura Sea	4347	7583	197761
+Banda Sea	4349	5186	29275
+Gulf of Boni	4350	167	441
+Ceram Sea	4351	1709	5453
+Halmahera Sea	4353	1421	4966
+Molukka Sea	4354	2193	8347
+Gulf of Tomini	4355	599	2621
+Sulu Sea	4358	5133	30685
+Celebes Sea	4359	3229	13701
+Bismarck Sea	4360	5220	38214
+Solomon Sea	4361	4689	31383
+Coral Sea	4364	25342	1303882
+Tasman Sea	4365	15903	1208552
+Bass Strait	4366	6720	796295
+Northwestern Passages	5698	446	80509
