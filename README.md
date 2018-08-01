@@ -1,6 +1,6 @@
 # water body checklists
 
-This repository contains code for making checklists for bodies of water using the effechecka API and submitting through Jenkins. The code works by submitting polygons to effechecka which then assembles deduplicated lists of all the taxa with occurrence data within the polygon. The polygons used in this code are from IHO through marineregions.org.
+This repository contains code for making species checklists for bodies of water using the effechecka API and submitting through Jenkins. The code works by submitting polygons to effechecka which then assembles deduplicated lists of all the taxa with occurrence data within the polygon. The polygons used in this code are from IHO through marineregions.org.
 
 ## Getting the Polygons
 
@@ -11,6 +11,8 @@ Marineregions.org has IHO polygons available, but no automated way of getting th
 The effechecka API was used in two steps. First, the query had to be submitted, then the results downloaded. Since these are very large lists, it can take some time between the initial query and completion of the list. The first time a query is submitted, effechecka starts compiling the list. The second time it is submitted, the results are downloaded, if they are ready. If they are not ready, you will have to submit the query again later. The Jenkins job will automatically do this for you. The code for the Jenkins job is in checklists_script_gen.sh.
 
 Effechecka gives lists back as tsv files. These files are downloaded into a checklists directory with the id # used to tag the wkt string as the file name, in this case, the mrgid. When all of the checklists are complete and downloaded, the script compresses all the lists in checklist.tar.gz. This needs to be downloaded to a local machine outside of this directory because the files will be too large for GitHub. Every waterbody has a checklist file and the filename is the waterbody's mrgid. Checklists need to be renamed with the waterbody name (all lowercase and underscores for spaces) and placed in a directory that is also named after the waterbody. This is done with rename_checklist.py. When you are done, you shoud have a directory that has a subdirectory for every waterbody, with the corresponding tsv checklist file in that directory.
+
+Effechecka cannot accommodate "donuts". That means when you what a species list from a water body, you cannot exclude the islands. That means terrestrial species may be included in a checklist for a water body. For the oceans (Indian, Pacific, Atlantic, Southern, Arctic) we allowed this. The other lists were put through a "marine filter" derived from WoRMS. 
 
 ## Making the TraitBank files
 
