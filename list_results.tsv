@@ -1,11 +1,11 @@
 water_body	mrgid	number_species	number_records
-Indian Ocean	1904	72131	5901072
+Indian Ocean	1904	72118	5901069
 Arctic Ocean	1906	1952	67153
 Southern Ocean	1907	9706	1498141
 North Pacific	1908	90597	19714677
-South Pacific	1910	58163	3004358
-North Atlantic	1912	83866	43984554
-South Atlantic	1914	60616	3493459
+South Pacific	1910	58156	3004368
+North Atlantic	1912	83854	43984518
+South Atlantic	1914	60610	3493452
 North Sea	2350	7688	5851385
 Celtic Sea	2351	3768	419781
 Norwegian Sea	2353	452	24534
@@ -57,23 +57,23 @@ Malacca Strait	4275	2709	21298
 Great Australian Bight	4276	6412	338822
 Inner Seas off the West Coast of Scotland	4283	3025	335979
 Gulf of Guinea	4286	8736	254291
-Caribbean Sea	4287	11571	608383
-Gulf of Mexico	4288	13941	4800484
+Caribbean Sea	4287	11569	608383
+Gulf of Mexico	4288	13939	4800484
 Bay of Fundy	4289	1669	232910
-Gulf of St Lawrence	4290	1235	464682
+Gulf of St Lawrence	4290	1234	464682
 Labrador Sea	4291	1365	222997
 Philippine Sea	4300	16741	301052
 Eastern China Sea	4302	4113	56812
 Yellow Sea	4303	971	32350
 Seto Inland Sea	4306	1712	45725
-Sea of Japan	4307	3776	55720
+Sea of Japan	4307	3775	55720
 Sea of Okhostk	4309	958	8794
-Bering Sea	4310	3591	926612
-Gulf of Alaska	4312	2935	400240
+Bering Sea	4310	3590	926612
+Gulf of Alaska	4312	2934	400240
 Gulf of California	4314	4808	108577
 Rio de la Plata	4325	275	6607
 South China Sea	4332	10445	289368
-Gulf of Thailandf	4334	1862	27531
+Gulf of Thailand	4334	1862	27531
 Singapore Strait	4336	2093	12196
 Java Sea	4338	1725	8911
 Makassar Strait	4339	2004	8047
@@ -93,6 +93,6 @@ Celebes Sea	4359	3229	13701
 Bismarck Sea	4360	5220	38214
 Solomon Sea	4361	4689	31383
 Coral Sea	4364	25342	1303882
-Tasman Sea	4365	15903	1208552
+Tasman Sea	4365	15902	1208552
 Bass Strait	4366	6720	796295
 Northwestern Passages	5698	446	80509

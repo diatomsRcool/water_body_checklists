@@ -1,9 +1,9 @@
 import pickle
 import re
 
-p = '5698'
+p = '4286'
 
-in_file = open('/Users/annethessen/waterbody_checklist_result/checklist/' + p + '_w.tsv', 'r') #this is the results from effechecka
+in_file = open('/Volumes/PCCOMP/waterbody_checklist_result/checklist/' + p + '_w.tsv', 'r') #this is the results from effechecka
 out_file = open('tb_measurement.txt', 'w')
 out_file_t = open('tb_taxon.txt', 'w')
 out_file_c = open('tb_occurrence.txt', 'w')
@@ -70,6 +70,17 @@ def norm_len(hi_class):
         pass
     return hi_class, skip
 
+def genus_check(genus, species):
+	r = genus.split(' ')
+	if len(r) > 1:
+		if r[1] == "f." or r[1] == "F." or r[1].lower() == species or r[1] == 'Delle' or r[1] == 'Des':
+			genus = r[0]
+			return(genus)
+		else:
+			return(genus)
+	else:
+		return(genus)
+
 kingdoms = []
 phyla = []
 classes = []
@@ -100,6 +111,7 @@ for line in in_file:
     family = taxon_string[4].title()
     genus = taxon_string[5].title()
     species = taxon_string[6]
+    genus = genus_check(genus, species)
     if species == '' or genus == '': #if its not identified to species, then we don't want it
         continue
     else:
