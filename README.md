@@ -16,68 +16,48 @@ Effechecka cannot accommodate "donuts". That means when you what a species list 
 
 ## Making the TraitBank files
 
-These need to be translated into DwC format for upload into TraitBank. This is done with checklist_to_traitbank.py which uses functions in checklist_functions.py. The first block of code makes the dictionaries needed to keep track of all the taxon ids and parent ids. The second block of code generates the TraitBank files. These files are compressed and uploaded into EOL opendata for eventual upload into TraitBank. Each country will have its own TraitBank DwC-A.
+Checklists need to be translated into DwC format for upload into TraitBank. This is done with checklist_to_traitbank.py which uses functions in checklist_functions.py. The first block of code makes the dictionaries needed to keep track of all the taxon ids and parent ids. The second block of code generates the TraitBank files. These files are compressed and uploaded into EOL opendata for eventual upload into TraitBank. Each water body will have its own TraitBank DwC-A.
 
-I have not written any code to automatically generate the zipped archives for upload into opendata. This can be done manually or via the command line using the zipfile Python library. An example, that creates and archive for albania is below.
+I have not written any code to automatically generate the zipped archives for upload into opendata. This can be done manually or via the command line using the zipfile Python library. An example, that creates and archive for the Red Sea is below.
 
-python -m zipfile -c albania.zip tb_measurement.txt tb_occurrence.txt tb_taxon tb_references meta.xml
+python -m zipfile -c red_sea.zip tb_measurement.txt tb_occurrence.txt tb_taxon tb_references meta.xml
 
-The archive is submitted to https://opendata.eol.org/dataset/nationalchecklists manually.
+The archive is submitted to https://opendata.eol.org/dataset/water-body-checklists manually.
 
 ## File Descriptions
-
-Build_Taxon.ipynb - Jupyter notebook that takes a tsv checklist and creates the dictionaries needed to manage the taxon and parent ids during the process of building the TraitBank Darwin Core Archives.
-
-Make_TB_file.ipynb - Jupyter notebook that reads the tsv checklist and creates the Darwin Core archive needed for upload into TraitBank. The taxon and parent IDs are managed via dictionaries that were made using Build_Taxon.ipynb
-
-bird_data.txt - a list of all countries, their geonames ID, the number of bird species, and the number of bird observations. this is the output from get_birds.py
-
-build_continent_dict.py - This code creates a look up dictionary from a list of contries and their continents. Country is the key and continent is the value. This code created continent_dict.p
 
 checklist_functions.py - This file contains commonly-used functions to prepare the tsv checklist for processing into TraitBank files. They are used in checklist_to_traitbank.py
 
 checklist_script_gen.sh - A bash script for creating the effechecka queries from a list of wkt strings (wkt_string.tsv). It also creates two other scripting files, checklist_status.sh and checklist_download.sh. These are the scripts that run in Jenkins. Every time this GitHub repository is updated, the Jenkins job is triggered. So, if the wkt_string.tsv file is updated, the scripts get run automatically.
 
-checklist_to_traitbank.py - This code iterates over the directory containing the checklists that were obtained via the Jenkins job (checklist_script_gen.sh). In the directory is a subdirectory containing the effechecka output (tsv) for each country. The code goes through each directory and creates a the taxon id and parent dictionaries needed to create the measurement, taxon, and occurrence files for each country-based DwC-A. The input is the tsv checklist. The outputs are the files for the TraitBank DwC-A. This code also outputs some summary stats for each country to a separate file.
+checklist_to_traitbank.py - This code iterates over the directory containing the checklists that were obtained via the Jenkins job (checklist_script_gen.sh). In the directory is a subdirectory containing the effechecka output (tsv) for each country. The code goes through each directory and creates the taxon id and parent dictionaries needed to create the measurement, taxon, and occurrence files for each country-based DwC-A. The input is the tsv checklist. The outputs are the files for the TraitBank DwC-A. This code also outputs some summary stats for each water body to a separate file.
 
-continent_dict.p - a dictionary for looking up a country's continent. Country name with underscore instead of spaces is the key and the two-letter continent abbreviation is the value. Use the Python pickle module to load the dictionary.
+list_results.tsv - This is a list of all the water bodies with their mrgid and some stats about their checklists. These stats are out of date! Ignore the stats. Use the list to iterate over all the water bodies with their mrgids.
 
-country_dict.p - a dictionary for looking up country by geonames ID. Geonames ID is the key and country is the value. Use the Python pickle module to load the dictionary.
+low_res_sea.json - 
 
-country_list_1.txt - tab-delimited list of the countries, their two letter abbreviations, and their geonames ID. One country per row. A few more political areas have been added, such as Tibet and Puerto Rico.
+make_water_dict.py - This code made polygon_dict.p that links mrgids and polygons and water_dict.p that links water bodies with their mrgids.
 
-get_birds.py - This code goes through all the checklists and finds all the birds. It outputs a row with the country name, country Geonames ID, number of bird species, and number of bird observations.
+make_wkstring.py - This code makes wkt strings for every polygon in low_res_sea.json. These are the wkt strings used by checklists_script_gen.sh. The result is wkt_string.tsv.
 
-get_effechecka_data.ipynb - This is the jupyter notebook that can be used to submit one or two countries to the effechecka API to generate the checklist.
+marine_filter.py - This code filters out non-marine taxa only. It is no longer used in lieu of the rename_and_filter_checklist.py code.
 
-id_dict.p - a dictionary for looking up a country's geonames ID. Country is the key and geonames ID is the value. Use the Python pickle module to load the dictionary.
-
-low_res_countries.json - This json file has the polygons for each country connected to their geonames ID. This file was created by reduce_polygon.ipynb
-
-make_continent_list.py - This code generated the checklists for the continents.
-
-make_country_dict.py - This code created country_dict.p, id_dict.p, and polygon_dict.p
-
-make_taxon_records_data.py - This code created a file called taxon_data.txt that gives the number of observations of each family in each country. This was part of my exploration of checklists and geographic data.
-
-make_wkstring.py - This code makes wkt strings for every polygon in low_res_countries.json. These are the wkt strings used by checklists_script_gen.sh
+marine_taxa.p - This is a list of taxa that were collated from the existing checklists and cross-referenced with WoRMS. According to WoRMS the taxa on this list are marine. It acts as a "white list". 
 
 meta.xml - This is a file that describes the contents of the DwC-A. It must be included in the archive. You should not have to change this.
 
-parent_dict.p - This dictionary is for looking up a parent for any taxon. The taxon is the key and its parent is the value. It is created by make_taxon_dict.py and Build_Taxon.ipynb. This dictionary is redone for every country.
+not_marine_taxa.p - This is a list of taxa that were collated from the existing checklists and cross-referenced with WoRMS. According to WoRMS the taxa on this list are NOT marine. It acts as a "black list". 
 
-polygon_dict.p - This dictionary allows looking up a polygon by the corresponding country's geonames id. It was created by make_country_dict.py
+parent_dict.p - This dictionary is for looking up a parent for any taxon. The taxon is the key and its parent is the value. It is created by rename_and_filter_checklist.py. This dictionary is redone for every water body.
 
-reduce_polygon.ipynb - This code was used to reduce the length of the polygons that were too large to fit in the API query
+polygon_dict.p - This dictionary allows looking up a polygon by the corresponding water body's mrgid. It was created by make_country_dict.py
 
-rename_checklist.py - This code changes file names from a geonames id to a country name and creates directories for each country.
+reduce_polygon.py - This file iterates over all the JSON files in this repo and reduces the resolution of the polygons. It creates the low_res_sea.json file.
 
-taxon_data.txt - The results of make_taxon_records_data.py. It is a list of all families from each country and their number of observations.
+rename_and_filter_checklist.py - This code changes file names from a mrgid to a water body name and creates directories for each water body. All checklists except for the major oceans (Indian, Pacific, Southern, Atlantic, Arctic) are filtered using data from WoRMS to remove all non-marine taxa. This code uses marine_taxa.p and non_marine_taxa.p to do the filtering. Any taxa that does not show up as being either marine or non-marine is output in a separate file. The output of this code will print a message to tell you if a taxon in the list is not showing up.
 
-taxon_id.p - This dictionary is for looking up the taxon id for any taxon. The taxon is the key and its id is the value. It is created by make_taxon_dict.py and Build_Taxon.ipynb. The identifier is question is local and only valid within the Darwin Core Archive. This dictionary is redone for every country.
+taxon_id.p - This dictionary is for looking up the taxon id for any taxon. The taxon is the key and its id is the value. It is created by rename_and_filter_checklist.py. The identifier in question is local and only valid within the Darwin Core Archive. This dictionary is redone for every water body.
 
-tb_references.txt - This is the references file extension for the DwC-A. The Date accessed for GeoNames and Fresh Data MAY need to be changed.
+tb_references.txt - This is the references file extension for the DwC-A. The Date accessed for IHO and Fresh Data MAY need to be changed.
 
-test_country.txt - I list of only a few countries used for testing purposes.
-
-wkt_string.tsv - A list with one wkt string for each country and its geonames ID. This file is used by checklists_script_gen.sh to formulate the effechecka queries
+wkt_string.tsv - A list with one wkt string for each country and its mrgid. This file is used by checklists_script_gen.sh to formulate the effechecka queries
