@@ -1,0 +1,2 @@
+R01	FreshData. https://github.com/gimmefreshdata/freshdata/wiki/api Accessed December 2017
+R02	International Hydrographic Association, IHO 23-3rd: Limits of Oceans and Seas, Special Publication 23, 3rd Edition 1953, published by the International Hydrographic Organization., Accessed at http://www.marineregions.org June 2017
