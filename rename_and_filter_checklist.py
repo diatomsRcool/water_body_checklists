@@ -1,5 +1,5 @@
 #this code changes the file names from mrgid to water body name
-#it creates a directory for each country and places the tsv file in that directory
+#it creates a directory for each water body and places the tsv file in that directory
 #the water body name is all lower case with underscores for spaces
 #be sure to change the file paths for your local machine
 
